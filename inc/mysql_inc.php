@@ -44,11 +44,11 @@ function Mysql_inc_execute_bool($link,$query){
 	return $bool;
 }
 
-// @一次性执行多条SQL语句
-// p1：link对象，对象
-// p2：多条语句，字符串数组
-// p3：用于引用返回的错误信息，引用型字符串
-// 执行成功返回结果集数组，否则返回bool值false
+//@ 一次性执行多条SQL语句
+//@ p1：link对象，对象
+//@ p2：多条语句，字符串数组
+//@ p3：用于引用返回的错误信息，引用型字符串
+//@ 执行成功返回结果集数组，否则返回bool值false
 function Mysql_inc_execute_multi($link,$arr_sqls,&$error){
 	$sqls=implode(';',$arr_sqls).';';
 	
@@ -93,9 +93,27 @@ function Mysql_inc_get_line_num($link,$list_name){
 	return $count[0];//count数组的仅有的值就是表的行数
 }
 
-// 关闭与数据库的连接
-// @p1：link对象，对象
-// 无返回值
+
+//@ 将即将进入数据库的字符串或者字符串数组转义，确保其能正确执行。
+//@ p1:link对象，对象
+//@ p2：待转义的数据，字符串或者字符串数组
+//@ 返回转义后的字符串或者字符串数组
+function Mysql_inc_escape($link,$data){
+	//如果是数组，则递归下去。递归到字符串就停止递归，返回转义后的字符串。
+	if(is_string($data) ){
+		return mysqli_real_escape_string($link, $data);
+	}
+	if(is_array($data)){
+		foreach ($data as $key=>$val){
+			$data[$key]=Mysql_inc_escape($link, $val);
+		}
+	}	
+	return $data;
+}
+
+//@ 关闭与数据库的连接
+//@ p1：link对象，对象
+//@ 无返回值
 function Mysql_inc_close_connect($link){
 	mysqli_close($link);
 }
