@@ -1,0 +1,95 @@
+
+<!-- 
+
+<?php 
+	//本文件的功能:父版块列表的显示
+	
+	//这段php代码是admin下的各个版块文件的，获取各自数据库文件的代码
+	
+	// config_inc.php 是所有php文件都要导入的基本配置文件
+	// mysql_inc.php 是实现写好的数据库操作文件，里面有封装好的函数
+	include_once '../inc/config_inc.php';
+	include_once '../inc/mysql_inc.php';
+
+	$link=Mysql_inc_connect();
+?>
+
+
+<?php include_once 'inc/header_inc.php'; 
+//导入这个写好的网页，可以看到网页的上面和左面。admin/inc目录下的每个.php版块都要导入这两个文件，因为
+//它们的这两块部分是一致的
+?>
+
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+</head>
+
+<body>
+
+
+
+<div id="main">
+	<div class="title">父版块列表</div>
+	
+	
+	<table class="list">
+		<tr>
+			<th>排序</th>	 	 	
+			<th>版块名称</th>
+			<th>操作</th>
+		</tr>
+		
+			<tr>
+				<td>	<input class="sort" type="text" name="sort" />	</td>
+				<td> 	<input type="text" class="father_module_name" >	</td>
+				<td>	
+					<a href="#">[访问]</a>
+					&nbsp;&nbsp;
+					<a href="#">[编辑]</a>
+					&nbsp;&nbsp;
+					<a href="#">[删除]</a>
+				</td>
+			</tr>
+		
+	</table>
+</div>
+
+<button> 开始搜索数据库 </button>
+
+<script src="../js/jquery.min.js"> </script>
+<script>
+	var $sort= $('.sort');
+    var $name = $('.father_module_name');
+    var $button = $('button');
+
+    function fun(){
+		$.ajax({
+			type:'get',
+			url:'father_module.php',
+			dataType:'json',
+
+			success:function(res){
+				$sort.val( res.info );	
+				console.log(res);
+			}
+		})
+	}
+    
+    $button.eq(0).click(fun);
+</script>
+
+</body>
+
+
+</html>
+
+<!-- 
+<?php include_once 'inc/footer_inc.php'; ?>
+
+-->
+
