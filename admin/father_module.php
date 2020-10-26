@@ -5,7 +5,7 @@
 	
 	$link = Mysql_inc_connect();
 	
-	$query = 'select * from father_module';
+	$query = 'select * from sfk_father_module';
 	
 	//$data_all =Mysql_inc_select_return_array($link, $query);
 	
