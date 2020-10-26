@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .a{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <p id="p">ajax</p>
+  <input type="text" name="" id="sear">
+  <button id="btn">搜索</button>
+  <div id="cont">
+
+  </div>
+</body>
+<script>
+  //页面加载完成时
+  var sear=document.getElementById('sear');
+  var btn=document.getElementById('btn');
+
+  btn.onclick=function(){
+    
+    var ajax=new XMLHttpRequest();
+
+    //设置请求方式 和 具体路径 
+    // ajax.open('GET','https://api.apiopen.top/musicRankings');    //ajax 发送一个请求 去访问这个路径 后端的http服务中特殊地处理了这个路径 返回一个json字符串
+    // ajax.open('GET','https://api.oioweb.cn/api/qq.php?qq=1987712414');    //ajax 发送一个请求 去访问这个路径 后端的http服务中特殊地处理了这个路径 返回一个json字符串
+    ajax.open('GET','admin/father_module.php');    //ajax 发送一个请求 去访问这个路径 后端的http服务中特殊地处理了这个路径 返回一个json字符串
+  
+    //监听状态的改变  只要状态发送改变 就会执行这个函数走一次判断 完成之后就会执行if里面的东西
+    // ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=utf-8");
+    ajax.onreadystatechange=function(){
+      //当解析完响应之后（已经获得了数据） 会执行这个函数把请求回来的数据渲染到页面上
+      if(ajax.readyState===4&&ajax.status===200){
+        //ajax.responseText 是拿到的结果
+       // var obj=JSON.parse(ajax.responseText);  //把拿到的json字符串转成json对象
+
+
+        console.log(ajax.responseText);
+
+      }
+    }
+    ajax.send()  //发送一个ajax请求  服务端会做出响应（我们自己写的1005）
+  }
+</script>
+</html>

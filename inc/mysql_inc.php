@@ -7,11 +7,11 @@
 function Mysql_inc_connect($host=DB_HOST,$user=DB_USER,$password=DB_PASSWORD,$database=DB_DATABASE,$port=DB_PORT){
 	$link=@mysqli_connect($host, $user, $password, $database, $port);
 	if(mysqli_connect_errno()  ){
-		echo '连接mysql失败！';
+		//echo '连接mysql失败！';
 		exit(mysqli_connect_error()  );
 	}
 	mysqli_set_charset($link,'utf8');
-	echo '连接mysql成功！';
+	//echo '连接mysql成功！';
 	return $link;
 }
 
@@ -22,10 +22,10 @@ function Mysql_inc_connect($host=DB_HOST,$user=DB_USER,$password=DB_PASSWORD,$da
 function Mysql_inc_execute($link,$query){
 	$result=mysqli_query($link,$query);
 	if(mysqli_errno($link)  ){
-		echo '执行语句失败！';
+		//echo '执行语句失败！';
 		exit(mysqli_error($link)  );
 	}
-	echo '执行语句成功！';
+	//echo '执行语句成功！';
 	return $result;
 }
 
@@ -36,11 +36,11 @@ function Mysql_inc_execute($link,$query){
 function Mysql_inc_execute_bool($link,$query){
 	$bool=mysqli_real_query($link,$query);
 	if(mysqli_errno($link)  ){
-		echo 'cao';
-		echo '执行语句失败！';
+		//echo 'cao';
+		//echo '执行语句失败！';
 		exit(mysqli_error($link)  );
 	}
-	echo '执行语句成功！';
+	//echo '执行语句成功！';
 	return $bool;
 }
 
@@ -68,7 +68,7 @@ function Mysql_inc_execute_multi($link,$arr_sqls,&$error){
 			if(!mysqli_more_results($link)) break;
 		}while (mysqli_next_result($link));
 		if($i==count($arr_sqls)){
-			echo '执行语句成功';
+			//echo '执行语句成功';
 			return $data;
 		}else{
 			$error="sql语句执行失败：<br />&nbsp;数组下标为{$i}的语句:{$arr_sqls[$i]}执行错误<br />&nbsp;错误原因：".mysqli_error($link);
@@ -116,5 +116,13 @@ function Mysql_inc_escape($link,$data){
 //@ 无返回值
 function Mysql_inc_close_connect($link){
 	mysqli_close($link);
+}
+
+//@ 获取查询语句查得结果，以数组形式返回
+function Mysql_inc_select_return_array($link,$query,$error){
+	$query= Mysql_inc_escape($link,$query);//转义
+	$result = Mysql_inc_execute($link, $query);//执行
+	$data_all=mysqli_fetch_all($result,MYSQLI_ASSOC);//获取结果集的信息，保存在数组
+	return $data_all;
 }
 ?>
