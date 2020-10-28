@@ -38,9 +38,12 @@ function Mysql_inc_execute_bool($link,$query){
 	if(mysqli_errno($link)  ){
 		//echo 'cao';
 		//echo '执行语句失败！';
+		die('语句执行失败！');
 		exit(mysqli_error($link)  );
 	}
 	//echo '执行语句成功！';
+	//die('语句执行成功！');
+	
 	return $bool;
 }
 
@@ -119,7 +122,7 @@ function Mysql_inc_close_connect($link){
 }
 
 //@ 获取查询语句查得结果，以数组形式返回
-function Mysql_inc_select_return_array($link,$query,$error){
+function Mysql_inc_select_return_array($link,$query){
 	$query= Mysql_inc_escape($link,$query);//转义
 	$result = Mysql_inc_execute($link, $query);//执行
 	$data_all=mysqli_fetch_all($result,MYSQLI_ASSOC);//获取结果集的信息，保存在数组

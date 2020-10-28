@@ -69,14 +69,18 @@
 
     function fun(){
 		$.ajax({
-			type:'get',
-			url:'father_module.php',
+			type:'post',
+			url:'admin.php',
 			dataType:'json',
-
+			data:{
+				request_name:'aj1'
+			},
+			
 			success:function(res){
 				//$sort.val( res.info );
 				console.log('aacao');	
 				console.log(res);
+				console.log(res.error);
 			}
 		})
 	}
