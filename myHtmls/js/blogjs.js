@@ -58,7 +58,7 @@ function XiTongXinXi() {
         url: "",
         dataType: "json",
         data: {
-            request_namne: ""
+            request_namne: "system"
         },
         success: function (res) {
             console.log(res);
@@ -71,7 +71,7 @@ function FuMOKuaiLeiBiao() {
     var list = document.querySelector("#main5 .list");
     $.ajax({
         type: "post",
-        url: "",
+        url: "./myPhps/admin.php",
         dataType: "json",
         data: {
             request_namne: "father_module_get_all_records"
@@ -95,7 +95,7 @@ function ZiMOKuaiLeiBiao() {
     console.log(list);
     $.ajax({
         type: "psot",
-        url: "father_module.php",
+        url: "./myPhps/admin.php",
         dataType: "json",
         data: {
             request_namne: "module_get_all_records"
@@ -107,7 +107,7 @@ function ZiMOKuaiLeiBiao() {
             for (var i = 0; i < res.length; i++) {
 
                 str += "<tr><th><input type='text' value='" + res[i].sort + "'></th> <th>" + res[i].module_name
-                    + "</th><th>" + res + "</th><th>" + res + "</th><th><a href='#'>[访问]</a><a href='#'>[编辑]</a><a href='#'>[删除]</a></th></tr>";
+                    + "</th><th>" + res[i].father_module_id + "</th><th>" + res[i].member_id + "</th><th><a href='#'>[访问]</a><a href='#'>[编辑]</a><a href='#'>[删除]</a></th></tr>";
             }
             str += "</table>";
             list.innerHTML = str;
@@ -122,7 +122,7 @@ function getFuBanKuai() {
     }
     $.ajax({
         type: "psot",
-        url: "father_module.php",
+        url: "./myPhps/admin.php",
         dataType: "json",
         data: json1,
         success: function (res) {
@@ -140,7 +140,7 @@ function getZiBanKuai() {
     }
     $.ajax({
         type: "psot",
-        url: "father_module.php",
+        url: "./myPhps/admin.php",
         dataType: "json",
         data: json1,
         success: function (res) {

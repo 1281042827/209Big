@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/register.js"></script>
+    <link rel="stylesheet" href="register.css">
+</head>
+
+<body>
+    <div class="header_wrap">
+        <div id="header" class="auto">
+            <div class="logo">sifangku</div>
+            <div class="nav">
+                <a class="hover" href="#">首页</a>
+            </div>
+            <div class="serarch">
+                <form action="#" method="get" name="SouSuo">
+                    <input class="keyword" type="text" name="keyword" value="" placeholder="搜索其实很简单" />
+                    <input class="submit" type="submit" value="" onclick="SouSuo();" />
+                </form>
+            </div>
+            <div class="login">
+                <a href="#">登录</a>
+                <a href="#">注册</a>
+            </div>
+        </div>
+    </div>
+    <div style="margin-top:55px;"></div>
+    <div id="register" class="auto">
+        <h2>欢迎注册成为 私房库会员</h2>
+        <form method="post" name="ZhuCeBiao">
+            <label>用户名：<input type="text" name="name" /><span>*用户名不得为空，并且长度不得超过32个字符</span></label>
+            <label>密码：<input type="password" name="pw" /><span>*密码不得少于6位</span></label>
+            <label>确认密码：<input type="password" name="confirm_pw" /><span>*请输入与上面一致</span></label>
+            <label>验证码：<input name="vcode" name="vocode" type="text" /><span>*请输入下方验证码</span></label>
+            <img class="vcode" src="show_code.php" />
+            <div style="clear:both;"></div>
+            <input class="btn" name="submit" type="submit" value="确定注册" onclick="ZhuCe();" />
+        </form>
+    </div>
+    <div id="footer" class="auto">
+        <div class="bottom">
+            <h1>209</h1>
+        </div>
+        <div class="copyright">Powered by sifangku ©2020 209Big.com</div>
+    </div>
+</body>
+
+</html>
