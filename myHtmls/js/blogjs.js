@@ -71,7 +71,7 @@ function FuMOKuaiLeiBiao() {
     var list = document.querySelector("#main5 .list");
     $.ajax({
         type: "post",
-        url: "",
+        url: "../myPhps/admin.php",
         dataType: "json",
         data: {
             request_namne: "father_module_get_all_records"
