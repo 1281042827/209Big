@@ -5,7 +5,7 @@ function GuanLiYanLieBiao() {
         url: "",
         dataType: "json",
         data: {
-            request_namne: ""
+            request_name: ""
         },
         success: function (res) {
             var str = "<table class='list'><tr><th>名称</th><th>等级</th><th>创建日期</th><th>操作</th></tr>";
@@ -20,7 +20,7 @@ function GuanLiYanLieBiao() {
 }
 function getGuanLiYuan() {
     var json1 = {
-        "request_namne": "",
+        "request_name": "",
         "name": document.GuanLiyaunLieBiao.name.value,
         "pw": document.GuanLiyaunLieBiao.pw.value,
         "level": document.GuanLiyaunLieBiao.level.value,
@@ -36,7 +36,7 @@ function getGuanLiYuan() {
 }
 function getZhanDianSheJi() {
     var json1 = {
-        "request_namne": "",
+        "request_name": "",
         "title": document.WangZhanSheZhi.title.value,
         "keywords": document.WangZhanSheZhi.keywords.value,
         "description": document.WangZhanSheZhi.description.value,
@@ -55,10 +55,10 @@ function XiTongXinXi() {
     var list = document.querySelector("#SuJUSL");
     $.ajax({
         type: "post",
-        url: "",
+        url: "../myPhps/admin.php",
         dataType: "json",
         data: {
-            request_namne: "system"
+            request_name: "system"
         },
         success: function (res) {
             console.log(res);
@@ -71,10 +71,10 @@ function FuMOKuaiLeiBiao() {
     var list = document.querySelector("#main5 .list");
     $.ajax({
         type: "post",
-        url: "./myPhps/admin.php",
+        url: "../myPhps/admin.php",
         dataType: "json",
         data: {
-            request_namne: "father_module_get_all_records"
+            request_name: "father_module_get_all_records"
         },
         success: function (res) {
             console.log(res);
@@ -95,10 +95,10 @@ function ZiMOKuaiLeiBiao() {
     console.log(list);
     $.ajax({
         type: "psot",
-        url: "./myPhps/admin.php",
+        url: "../myPhps/admin.php",
         dataType: "json",
         data: {
-            request_namne: "module_get_all_records"
+            request_name: "son_module_list"
         },
         success: function (res) {
             console.log(res);
@@ -116,13 +116,13 @@ function ZiMOKuaiLeiBiao() {
 }
 function getFuBanKuai() {
     var json1 = {
-        "request_namne": "father_module_get_all_records",
+        "request_name": "father_module_add",
         "module_name": document.fubankuai.module_name.value,
         "sort": document.fubankuai.sort.value,
     }
     $.ajax({
         type: "psot",
-        url: "./myPhps/admin.php",
+        url: "../myPhps/admin.php",
         dataType: "json",
         data: json1,
         success: function (res) {
@@ -131,7 +131,7 @@ function getFuBanKuai() {
 }
 function getZiBanKuai() {
     var json1 = {
-        "request_namne": "module_get_all_records",
+        "request_name": "son_module_add",
         "father_module_id": document.ZiBanKuai.father_module_id.value,
         "module_name": document.ZiBanKuai.module_name.value,
         "info": document.ZiBanKuai.info.value,
@@ -140,7 +140,7 @@ function getZiBanKuai() {
     }
     $.ajax({
         type: "psot",
-        url: "./myPhps/admin.php",
+        url: "../myPhps/admin.php",
         dataType: "json",
         data: json1,
         success: function (res) {
