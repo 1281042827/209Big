@@ -16,20 +16,10 @@
 		break;
 		}
 		case 'father_module_add':{
-			
-			$query = "insert into sfk_father_module (module_name,sort) VALUES ( {$_POST["module_name"]}, {$_POST["sort"]} );";
+			$query = "insert into sfk_father_module (module_name,sort) VALUES ($_POST[module_name], $_POST[sort]);";
 			$success =Mysql_inc_execute_bool($link,$query);
-		break;
 		}
-		case "son_module_list":{
-			$query = 'select * from sfk_son_module';
-			$success =Mysql_inc_select_return_array($link,$query);
-		break;
-		}
-		case 'son_module_add':{
-
-		break;
-		}
+		
 	}
 	
 

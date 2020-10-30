@@ -15,6 +15,11 @@ function GuanLiYanLieBiao() {
             }
             str += "</table>";
             list.innerHTML = str;
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            alert(XMLHttpRequest.status);
+            alert(XMLHttpRequest.readyState);
+            alert(textStatus);
         }
     });
 }
@@ -31,6 +36,11 @@ function getGuanLiYuan() {
         dataType: "json",
         data: json1,
         success: function (res) {
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            alert(XMLHttpRequest.status);
+            alert(XMLHttpRequest.readyState);
+            alert(textStatus);
         }
     });
 }
@@ -47,6 +57,11 @@ function getZhanDianSheJi() {
         dataType: "json",
         data: json1,
         success: function (res) {
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            alert(XMLHttpRequest.status);
+            alert(XMLHttpRequest.readyState);
+            alert(textStatus);
         }
     });
 }
@@ -63,7 +78,13 @@ function XiTongXinXi() {
         success: function (res) {
             console.log(res);
             var str = "<li id='SuJUSL'>| - 父版块(" + res + ")子版块(" + res + ")帖子(" + res + ")回复(" + res + ")会员(" + res + ")管理员(" + res + ")</li>";
-            list.innerHTML = str;
+            list.in,
+            nerHTML = str;
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            alert(XMLHttpRequest.status);
+            alert(XMLHttpRequest.readyState);
+            alert(textStatus);
         }
     });
 }
@@ -87,6 +108,11 @@ function FuMOKuaiLeiBiao() {
             }
             str += "</table>";
             list.innerHTML = str;
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            alert(XMLHttpRequest.status);
+            alert(XMLHttpRequest.readyState);
+            alert(textStatus);
         }
     });
 }
@@ -111,6 +137,11 @@ function ZiMOKuaiLeiBiao() {
             }
             str += "</table>";
             list.innerHTML = str;
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            alert(XMLHttpRequest.status);
+            alert(XMLHttpRequest.readyState);
+            alert(textStatus);
         }
     });
 }
@@ -126,6 +157,11 @@ function getFuBanKuai() {
         dataType: "json",
         data: json1,
         success: function (res) {
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            alert(XMLHttpRequest.status);
+            alert(XMLHttpRequest.readyState);
+            alert(textStatus);
         }
     });
 }
@@ -144,6 +180,11 @@ function getZiBanKuai() {
         dataType: "json",
         data: json1,
         success: function (res) {
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            alert(XMLHttpRequest.status);
+            alert(XMLHttpRequest.readyState);
+            alert(textStatus);
         }
     });
 }
