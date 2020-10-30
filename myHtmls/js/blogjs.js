@@ -26,7 +26,7 @@ function getGuanLiYuan() {
         "level": document.GuanLiyaunLieBiao.level.value,
     }
     $.ajax({
-        type: "psot",
+        type: "post",
         url: "",
         dataType: "json",
         data: json1,
@@ -42,7 +42,7 @@ function getZhanDianSheJi() {
         "description": document.WangZhanSheZhi.description.value,
     }
     $.ajax({
-        type: "psot",
+        type: "post",
         url: "",
         dataType: "json",
         data: json1,
@@ -74,7 +74,7 @@ function FuMOKuaiLeiBiao() {
         url: "../myPhps/admin.php",
         dataType: "json",
         data: {
-            request_name: "father_module_get_all_records"
+            request_name: "father_module_list"
         },
         success: function (res) {
             console.log(res);
@@ -94,7 +94,7 @@ function ZiMOKuaiLeiBiao() {
     var list = document.querySelector("#main7 .list");
     console.log(list);
     $.ajax({
-        type: "psot",
+        type: "post",
         url: "../myPhps/admin.php",
         dataType: "json",
         data: {
@@ -121,7 +121,7 @@ function getFuBanKuai() {
         "sort": document.fubankuai.sort.value,
     }
     $.ajax({
-        type: "psot",
+        type: "post",
         url: "../myPhps/admin.php",
         dataType: "json",
         data: json1,
@@ -139,7 +139,7 @@ function getZiBanKuai() {
         "sort": document.ZiBanKuai.sort.value,
     }
     $.ajax({
-        type: "psot",
+        type: "post",
         url: "../myPhps/admin.php",
         dataType: "json",
         data: json1,
