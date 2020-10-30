@@ -6,7 +6,7 @@
 function Mysql_inc_connect($host=DB_HOST,$user=DB_USER,$password=DB_PASSWORD,$database=DB_DATABASE,$port=DB_PORT){
 	$link=@mysqli_connect($host, $user, $password, $database, $port);
 	if(mysqli_connect_errno()  ){
-		//echo '连接mysql失败！';
+		//连接mysql失败！;
 		exit(mysqli_connect_error()  );
 	}
 	mysqli_set_charset($link,'utf8');
@@ -21,7 +21,7 @@ function Mysql_inc_connect($host=DB_HOST,$user=DB_USER,$password=DB_PASSWORD,$da
 function Mysql_inc_execute($link,$query){
 	$result=mysqli_query($link,$query);
 	if(mysqli_errno($link)  ){
-		//echo '执行语句失败！';
+		//执行语句失败！;
 		exit(mysqli_error($link)  );
 	}
 	//echo '执行语句成功！';
@@ -35,9 +35,7 @@ function Mysql_inc_execute($link,$query){
 function Mysql_inc_execute_bool($link,$query){
 	$bool=mysqli_real_query($link,$query);
 	if(mysqli_errno($link)  ){
-		//echo 'cao';
-		//echo '执行语句失败！';
-		die('语句执行失败！');
+		//语句执行失败！;
 		exit(mysqli_error($link)  );
 	}
 	//echo '执行语句成功！';

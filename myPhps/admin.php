@@ -32,7 +32,7 @@
 		}
 		case 'father_module_add':{
 			
-			$query = "insert into father_module (module_name,sort) VALUES ( {$_POST["module_name"]}, {$_POST["sort"]} );";
+			$query = "insert into father_module (module_name,sort) VALUES ( '{$_POST["module_name"]}', {$_POST["sort"]} );";
 			$success =Mysql_inc_execute_bool($link,$query);
 		break;
 		}

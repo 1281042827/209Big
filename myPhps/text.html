@@ -47,17 +47,19 @@
     function fun(){
 		$.ajax({
 			type:'post',
-			url:'admin.php',
+			url:'../myPhps/text.php',
 			dataType:'json',
 			data:{
-				request_name:'father_module_list'
+				request_name:'father_module_add',
+				module_name:'大大大',
+				sort:0
 			},
-			
 			success:function(res){
-				//$sort.val( res.info );
-				console.log('aacao');	
-				console.log(res);
-				console.log(res.error);
+				//console.log(res);
+				alert("成功");
+			},
+			error:function(){
+				alert("失败");
 			}
 		})
 	}

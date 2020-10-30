@@ -7,12 +7,14 @@
 	$error=null;//默认无错误
 	$success=null;//返回的数组
 	
-	
-	
-    $query = "insert into father_module (module_name,sort) VALUES ( '手机', 1 );";
+    //$myname =$_POST['module_name'];
+   // $mysort =$_POST['sort'];
+    //$query = "insert into father_module (module_name,sort) values( '$myname', '$mysort' );";
+	$query = "insert into father_module (module_name,sort) values( '{$_POST["module_name"]}', {$_POST["sort"]} );";
+
+    //$query = "insert into father_module (module_name,sort) values( '嗷嗷嗷', 1 );";
     $success =Mysql_inc_execute_bool($link,$query);
 	
-
 	//var_dump($success);
 	//var_dump(json_encode($success) );
 	echo json_encode($success);
