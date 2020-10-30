@@ -14,24 +14,15 @@
 		case 'system':{
 				//写好预处理语句，其中?是会改变的值
 				$success;
-/*
-father_module_count	int	父板块数量
-son_module_count	int	子版块数量
-content_count	int	帖子数量
-reply_count	int	回复数量
-member_count	int	会员数量
-admin_count	int	管理员数量
-
-*/
-
 				$table_name=array("father_module","son_module","content","reply","member","admin");
 				foreach($table_name as $i=>$tn){
-					$query ="select count(*) from $table_name";
+					$query ="select count(*) from $tn";
 					$result =Mysql_inc_execute($link,$query);
 					$count =mysqli_num_rows($result);//获取行数
 
-					array_push($success,$i,$count);//添加行数到数组里
+					array_push($success,$tn."_count",$count);//添加行数到数组里
 				}
+			break;
 		}
 
 		case "father_module_list":{
