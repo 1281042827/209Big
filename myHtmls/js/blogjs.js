@@ -74,7 +74,7 @@ function FuMOKuaiLeiBiao() {
         url: "../myPhps/admin.php",
         dataType: "json",
         data: {
-            request_namne: "father_module_get_all_records"
+            request_name: "father_module_list"
         },
         success: function (res) {
             console.log(res);

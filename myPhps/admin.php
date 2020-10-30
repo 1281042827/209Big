@@ -10,7 +10,7 @@
 	
 	
 	switch ($_POST['request_name']){//根据访问模块的名字执行操作
-		case 'father_module_list':{
+		case "father_module_list":{
 			$query = 'select * from sfk_father_module';
 			$success =Mysql_inc_select_return_array($link,$query);
 		}
@@ -20,6 +20,5 @@
 	}
 	
 	$success['error']=$error;
-	array_push($success,"blue","yellow");
 	echo json_encode($success);
 ?>
