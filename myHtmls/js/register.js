@@ -1,6 +1,6 @@
 function ZhuCe() {
     var json1 = {
-        "request_namne": "module_get_all_records",
+        "request_namne": "register",
         "name": document.ZhuCe.name.value,
         "pw": document.ZhuCe.pw.value,
         "confirm_pw": document.ZhuCe.confirm_pw.value,
@@ -8,7 +8,7 @@ function ZhuCe() {
     }
     $.ajax({
         type: "psot",
-        url: "./myPhps/admin.php",
+        url: "../myPhps/register.php",
         dataType: "json",
         data: json1,
         success: function (res) {
