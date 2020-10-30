@@ -35,14 +35,14 @@
     <div class="xt" onmouseover="btxs(0);" onmouseout="btSX(0);">
         <button onclick="xsmain(1);XiTongXinXi();">系统信息</button>
         <button onclick="xsmain(2);GuanLiYanLieBiao();">管理员</button>
-        <button onclick="xsmain(3);getGuanLiYuan();">添加管理员</button>
-        <button onclick="xsmain(4);getZhanDianSheJi();">站点设置</button>
+        <button onclick="xsmain(3);">添加管理员</button>
+        <button onclick="xsmain(4);">站点设置</button>
     </div>
     <di class="nrgl" onmouseover="btxs(1);" onmouseout="btSX(1);">
         <button onclick="xsmain(5);FuMOKuaiLeiBiao();">父板块列表</button>
-        <button onclick="xsmain(6);getFuBanKuai();">添加父板块</button>
+        <button onclick="xsmain(6);">添加父板块</button>
         <button onclick="xsmain(7);ZiMOKuaiLeiBiao();">子板块列表</button>
-        <button onclick="xsmain(8);getZiBanKuai()">添加子版块</button>
+        <button onclick="xsmain(8);">添加子版块</button>
         <button onclick="xsmain(9);">帖子管理</button>
     </di>
     <div class="yhgl" onmouseover="btxs(2);" onmouseout="btSX(2);">
@@ -139,7 +139,8 @@
                     </td>
                 </tr>
             </table>
-            <input style="margin-top:20px;cursor:pointer;" class="btn" type="submit" name="submit" value="添加" />
+            <input style="margin-top:20px;cursor:pointer;" class="btn" type="button" name="submit" value="添加"
+                onclick="getGuanLiYuan();" />
         </form>
     </div>
     <div id="main4">
@@ -170,7 +171,8 @@
                     </td>
                 </tr>
             </table>
-            <input style="margin-top:20px;cursor:pointer;" class="btn" type="submit" name="submit" value="设置" />
+            <input style="margin-top:20px;cursor:pointer;" class="btn" type="button" name="submit" value="设置"
+                onclick="getZhanDianSheJi();" />
         </form>
     </div>
     <div id="main5">
@@ -183,7 +185,7 @@
                     <th>操作</th>
                 </tr>
             </table>
-            <input style="margin-top:20px;cursor:pointer;" class="btn" type="submit" name="submit" value="排序" />
+            <input style="margin-top:20px;cursor:pointer;" class="btn" type="button" name="submit" value="排序" />
         </form>
     </div>
     <div id="main6">
@@ -205,7 +207,8 @@
                     </td>
                 </tr>
             </table>
-            <input style="margin-top:20px;cursor:pointer;" class="btn" type="submit" name="submit" value="添加" />
+            <input style="margin-top:20px;cursor:pointer;" class="btn" type="button" name="submit" value="添加"
+                onclick="getFuBanKuai();" />
         </form>
     </div>
     <div id="main7">
@@ -220,12 +223,12 @@
                     <th>操作</th>
                 </tr>
             </table>
-            <input style="margin-top:20px;cursor:pointer;" class="btn" type="submit" name="submit" value="排序" />
+            <input style="margin-top:20px;cursor:pointer;" class="btn" type="submit" name="button" value="排序" />
         </form>
     </div>
     <div id="main8">
         <div class="title" style="margin-bottom:20px;">添加子版块</div>
-        <form method="post" name="ZiBanKuai">
+        <div name="ZiBanKuai">
             <table class="au">
                 <tr>
                     <td>所属父版块</td>
@@ -259,7 +262,6 @@
                     <td>
                         <select name="member_id">
                             <option value="0">======请选择一个会员作为版主======</option>
-
                         </select>
                     </td>
                     <td>
@@ -274,8 +276,9 @@
                     </td>
                 </tr>
             </table>
-            <input style="margin-top:20px;cursor:pointer;" class="btn" type="submit" name="submit" value="添加" />
-        </form>
+            <input style="margin-top:20px;cursor:pointer;" class="btn" type="button" name="submit" value="添加"
+                onclick="getZiBanKuai();" />
+        </div>
     </div>
     <a href="" id="main9">test</a>
     <div id="main10">

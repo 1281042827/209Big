@@ -16,7 +16,7 @@ function GuanLiYanLieBiao() {
             str += "</table>";
             list.innerHTML = str;
         },
-        error: function(XMLHttpRequest, textStatus, errorThrown) {
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert(XMLHttpRequest.status);
             alert(XMLHttpRequest.readyState);
             alert(textStatus);
@@ -37,7 +37,7 @@ function getGuanLiYuan() {
         data: json1,
         success: function (res) {
         },
-        error: function(XMLHttpRequest, textStatus, errorThrown) {
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert(XMLHttpRequest.status);
             alert(XMLHttpRequest.readyState);
             alert(textStatus);
@@ -58,7 +58,7 @@ function getZhanDianSheJi() {
         data: json1,
         success: function (res) {
         },
-        error: function(XMLHttpRequest, textStatus, errorThrown) {
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert(XMLHttpRequest.status);
             alert(XMLHttpRequest.readyState);
             alert(textStatus);
@@ -70,18 +70,18 @@ function XiTongXinXi() {
     var list = document.querySelector("#SuJUSL");
     $.ajax({
         type: "post",
-        url: "../myPhps/admin.php",
+        url: " ../myPhps/admin.php",
         dataType: "json",
         data: {
             request_name: "system"
         },
         success: function (res) {
             console.log(res);
-            var str = "<li id='SuJUSL'>| - 父版块(" + res + ")子版块(" + res + ")帖子(" + res + ")回复(" + res + ")会员(" + res + ")管理员(" + res + ")</li>";
+            var str = "<li id='SuJUSL'>| - 父版块(" + res.father_module_count + ")子版块(" + res.son_module_count + ")帖子(" + res.content_count + ")回复(" + res.reply_count + ")会员(" + res.reply_count + ")管理员(" + res.admin_count + ")</li>";
             list.in,
-            nerHTML = str;
+                nerHTML = str;
         },
-        error: function(XMLHttpRequest, textStatus, errorThrown) {
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert(XMLHttpRequest.status);
             alert(XMLHttpRequest.readyState);
             alert(textStatus);
@@ -98,7 +98,6 @@ function FuMOKuaiLeiBiao() {
             request_name: "father_module_list"
         },
         success: function (res) {
-            console.log(res);
             var str = "<table class='list'>";
             str += "<tr><th>排序</th><th>版块名称</th><th>操作</th></tr>";
             for (var i = 0; i < res.length; i++) {
@@ -109,7 +108,7 @@ function FuMOKuaiLeiBiao() {
             str += "</table>";
             list.innerHTML = str;
         },
-        error: function(XMLHttpRequest, textStatus, errorThrown) {
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert(XMLHttpRequest.status);
             alert(XMLHttpRequest.readyState);
             alert(textStatus);
@@ -129,16 +128,16 @@ function ZiMOKuaiLeiBiao() {
         success: function (res) {
             console.log(res);
             var str = "<table class='list'>";
-            str += "<tr><th>排序</th><th>版块名称</th><th>所属父版块</th><th>版主</th><th>操作</th></tr>";
+            str += "<tr><th>排序</th><th>版块名称</th><th>所属父版块</th><th>所属父版块id</th><th>版主</th><th>版主</th><th>操作</th></tr>";
             for (var i = 0; i < res.length; i++) {
 
                 str += "<tr><th><input type='text' value='" + res[i].sort + "'></th> <th>" + res[i].module_name
-                    + "</th><th>" + res[i].father_module_id + "</th><th>" + res[i].member_id + "</th><th><a href='#'>[访问]</a><a href='#'>[编辑]</a><a href='#'>[删除]</a></th></tr>";
+                    + "</th><th>" + res[i].father_module_name + "</th><th>" + res[i].father_module_id + "</th><th>" + res[i].member_name + "</th><th>" + res[i].member_id + "</th><th><a href='#'>[访问]</a><a href='#'>[编辑]</a><a href='#'>[删除]</a></th></tr>";
             }
             str += "</table>";
             list.innerHTML = str;
         },
-        error: function(XMLHttpRequest, textStatus, errorThrown) {
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert(XMLHttpRequest.status);
             alert(XMLHttpRequest.readyState);
             alert(textStatus);
@@ -151,19 +150,27 @@ function getFuBanKuai() {
         "module_name": document.fubankuai.module_name.value,
         "sort": document.fubankuai.sort.value,
     }
+
     $.ajax({
         type: "post",
         url: "../myPhps/admin.php",
         dataType: "json",
         data: json1,
         success: function (res) {
+
+            alert(json1.request_name);
+            alert(json1.module_name);
+            alert(json1.sort);
         },
-        error: function(XMLHttpRequest, textStatus, errorThrown) {
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert(XMLHttpRequest.status);
             alert(XMLHttpRequest.readyState);
             alert(textStatus);
         }
     });
+
+
+
 }
 function getZiBanKuai() {
     var json1 = {
@@ -181,7 +188,7 @@ function getZiBanKuai() {
         data: json1,
         success: function (res) {
         },
-        error: function(XMLHttpRequest, textStatus, errorThrown) {
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert(XMLHttpRequest.status);
             alert(XMLHttpRequest.readyState);
             alert(textStatus);
@@ -311,6 +318,34 @@ function xsmain(num) {
         main8.style.display = "block";
         main9.style.display = "none";
         main10.style.display = "none";
+        var list1 = document.querySelectorAll("#main8 .au select")[0];
+        var list2 = document.querySelectorAll("#main8 .au select")[1];
+        var str1 = "< name='father_module_id'><option value='0'>======请选择一个父版块======</option>";
+        var str2 = "<select name='member_id'><option value='0'>======请选择一个会员作为版主======</option>";
+        $.ajax({
+            type: "post",
+            url: "../myPhps/admin.php",
+            dataType: "json",
+            data: {
+                request_name: "father_module_list"
+            },
+            success: function (res) {
+                console.log(res);
+                for (var i = 0; i < res.length; i++) {
+                    str1 += "<option value=" + res[i].father_module.father_module_id + ">" + res[i].father_module.father_module_name + "</option>";
+                    str2 += "<option value=" + res[i].member.member_name + ">" + res[i].member.member_id + "</option>";
+                }
+                str1 += "</select>";
+                str2 += "</select>";
+                list1.innerHTML = st1;
+                list2.innerHTML = st2;
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert(XMLHttpRequest.status);
+                alert(XMLHttpRequest.readyState);
+                alert(textStatus);
+            }
+        });
     } else if (num == 9) {
         main1.style.display = "none";
         main2.style.display = "none";
