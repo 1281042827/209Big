@@ -10,19 +10,43 @@
 	
 	
 	switch ($_POST['request_name']){//根据访问模块的名字执行操作
+
+		case 'system':{
+				//写好预处理语句，其中?是会改变的值
+				$success;
+/*
+father_module_count	int	父板块数量
+son_module_count	int	子版块数量
+content_count	int	帖子数量
+reply_count	int	回复数量
+member_count	int	会员数量
+admin_count	int	管理员数量
+
+*/
+
+				$table_name=array("father_module","son_module","content","reply","member","admin");
+				foreach($table_name as $i=>$tn){
+					$query ="select count(*) from $table_name";
+					$result =Mysql_inc_execute($link,$query);
+					$count =mysqli_num_rows($result);//获取行数
+
+					array_push($success,$i,$count);//添加行数到数组里
+				}
+		}
+
 		case "father_module_list":{
-			$query = 'select * from sfk_father_module';
+			$query = 'select * from father_module';
 			$success =Mysql_inc_select_return_array($link,$query);
 		break;
 		}
 		case 'father_module_add':{
 			
-			$query = "insert into sfk_father_module (module_name,sort) VALUES ( {$_POST["module_name"]}, {$_POST["sort"]} );";
+			$query = "insert into father_module (module_name,sort) VALUES ( {$_POST["module_name"]}, {$_POST["sort"]} );";
 			$success =Mysql_inc_execute_bool($link,$query);
 		break;
 		}
 		case "son_module_list":{
-			$query = 'select * from sfk_son_module';
+			$query = 'select * from son_module';
 			$success =Mysql_inc_select_return_array($link,$query);
 		break;
 		}
