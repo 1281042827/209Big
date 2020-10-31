@@ -70,7 +70,7 @@ function XiTongXinXi() {
     var list = document.querySelector("#SuJUSL");
     $.ajax({
         type: "post",
-        url: " ../myPhps/admin.php",
+        url: "../myPhps/admin.php",
         dataType: "json",
         data: {
             request_name: "system"
@@ -78,8 +78,7 @@ function XiTongXinXi() {
         success: function (res) {
             console.log(res);
             var str = "<li id='SuJUSL'>| - 父版块(" + res.father_module_count + ")子版块(" + res.son_module_count + ")帖子(" + res.content_count + ")回复(" + res.reply_count + ")会员(" + res.reply_count + ")管理员(" + res.admin_count + ")</li>";
-            list.in,
-                nerHTML = str;
+            list.innerHTML = str;
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert(XMLHttpRequest.status);
@@ -157,10 +156,7 @@ function getFuBanKuai() {
         dataType: "json",
         data: json1,
         success: function (res) {
-
-            alert(json1.request_name);
-            alert(json1.module_name);
-            alert(json1.sort);
+            alert("成功添加！！！！！！！！！！！！！");
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert(XMLHttpRequest.status);
@@ -173,20 +169,29 @@ function getFuBanKuai() {
 
 }
 function getZiBanKuai() {
+    var mystr = document.ZiBanKuai.father_module_id.value;
+    var strarray = mystr.split("/");
+    var mystr2 = document.ZiBanKuai.member_id.value;
+    var strarray2 = mystr2.split("/");
     var json1 = {
         "request_name": "son_module_add",
-        "father_module_id": document.ZiBanKuai.father_module_id.value,
+        "father_module_id": strarray[0],
+        "father_module_name": strarray[1],
         "module_name": document.ZiBanKuai.module_name.value,
         "info": document.ZiBanKuai.info.value,
-        "member_id": document.ZiBanKuai.member_id.value,
+        "member_id": strarray2[0],
+        "member_name": strarray2[1],
         "sort": document.ZiBanKuai.sort.value,
     }
+    console.log(json1);
     $.ajax({
         type: "post",
         url: "../myPhps/admin.php",
         dataType: "json",
         data: json1,
         success: function (res) {
+            alert("成功添加！！！！！！！！！！！！！");
+            console.log(json1);
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert(XMLHttpRequest.status);
@@ -320,25 +325,28 @@ function xsmain(num) {
         main10.style.display = "none";
         var list1 = document.querySelectorAll("#main8 .au select")[0];
         var list2 = document.querySelectorAll("#main8 .au select")[1];
-        var str1 = "< name='father_module_id'><option value='0'>======请选择一个父版块======</option>";
-        var str2 = "<select name='member_id'><option value='0'>======请选择一个会员作为版主======</option>";
+        var str1 = "< name='father_module_id'><option value=" + null + ">======请选择一个父版块======</option>";
+        var str2 = "<select name='member_id'><option value=" + null + ">======请选择一个会员作为版主======</option>";
         $.ajax({
             type: "post",
             url: "../myPhps/admin.php",
             dataType: "json",
             data: {
-                request_name: "father_module_list"
+                request_name: "son_module_open"
             },
             success: function (res) {
                 console.log(res);
-                for (var i = 0; i < res.length; i++) {
-                    str1 += "<option value=" + res[i].father_module.father_module_id + ">" + res[i].father_module.father_module_name + "</option>";
-                    str2 += "<option value=" + res[i].member.member_name + ">" + res[i].member.member_id + "</option>";
+                for (var i = 0; i < res.father_module.length; i++) {
+                    str1 += "<option value=" + res.father_module[i].id + "/" + res.father_module[i].module_name + ">" + res.father_module[i].module_name + "</option>";
+                }
+                for (var i = 0; i < res.member.length; i++) {
+
+                    str2 += "<option value=" + res.member[i].id + "/" + res.member[i].name + ">" + res.member[i].name + "</option>";
                 }
                 str1 += "</select>";
                 str2 += "</select>";
-                list1.innerHTML = st1;
-                list2.innerHTML = st2;
+                list1.innerHTML = str1;
+                list2.innerHTML = str2;
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 alert(XMLHttpRequest.status);
