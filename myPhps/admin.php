@@ -12,14 +12,13 @@
 	switch ($_POST['request_name']){//根据访问模块的名字执行操作
 
 		case 'system':{
-				$success;
 				$table_name=array("father_module","son_module","content","reply","member","admin");
 				foreach($table_name as $i=>$tn){
 					$query ="select count(*) from $tn";
 					$result =Mysql_inc_execute($link,$query);
 					$count =mysqli_num_rows($result);//获取行数
 
-					array_push($success,$tn."_count",$count);//添加行数到数组里
+					$success[$tn."_count"]=$count;//添加行数到数组里
 				}
 			break;
 		}
