@@ -12,7 +12,6 @@
 	switch ($_POST['request_name']){//根据访问模块的名字执行操作
 
 		case 'system':{
-				//写好预处理语句，其中?是会改变的值
 				$success;
 				$table_name=array("father_module","son_module","content","reply","member","admin");
 				foreach($table_name as $i=>$tn){
@@ -32,6 +31,7 @@
 		}
 		case 'father_module_add':{
 			
+			//module_name是字符串，必须加单引号括起来！
 			$query = "insert into father_module (module_name,sort) VALUES ( '{$_POST["module_name"]}', {$_POST["sort"]} );";
 			$success =Mysql_inc_execute_bool($link,$query);
 		break;
@@ -42,7 +42,28 @@
 		break;
 		}
 		case 'son_module_add':{
+			/*
+			father_module_id	是	int	父版块id
+			father_module_name	是	string	父版块名字
+			module_name	是	string	版块名称
+			info	是	string	版块简介
+			member_id	是	int	版主id
+			member_name
+			sort	是	int	排序号*/
+			
+			//字符串的必须加单引号括起来！
+			$query = "insert into son_module (father_module_id, father_module_name, module_name, info, member_id, member_name, sort) 
+			VALUES ( '{$_POST["father_module_id"]}', '{$_POST["father_module_name"]}', '{$_POST["module_name"]}', '{$_POST["info"]}', '{$_POST["member_id"]}', '{$_POST["member_name"]}', '{$_POST["sort"]}' );";
+			$success =Mysql_inc_execute_bool($link,$query);
+		break;
+		}
+		case 'son_module_open':{
+			$query = 'select * from father_module';
+			$arr1=Mysql_inc_select_return_array($link,$query);
+			$query = 'select * from member';
+			$arr2=Mysql_inc_select_return_array($link,$query);
 
+			$success=array("father_module"=>$arr1,"member"=>$arr2);
 		break;
 		}
 	}

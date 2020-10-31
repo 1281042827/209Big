@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50612
 File Encoding         : 65001
 
-Date: 2020-10-30 18:37:40
+Date: 2020-10-31 11:49:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -63,7 +63,7 @@ CREATE TABLE `father_module` (
   `sort` int(11) DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `module_name` (`module_name`)
-) ENGINE=MyISAM AUTO_INCREMENT=51 DEFAULT CHARSET=utf8 COMMENT='父版块信息表';
+) ENGINE=MyISAM AUTO_INCREMENT=65 DEFAULT CHARSET=utf8 COMMENT='父版块信息表';
 
 -- ----------------------------
 -- Records of father_module
@@ -72,7 +72,10 @@ INSERT INTO `father_module` VALUES ('0', '畅所欲言', '2');
 INSERT INTO `father_module` VALUES ('1', '技术交流', '1');
 INSERT INTO `father_module` VALUES ('2', '球类', '0');
 INSERT INTO `father_module` VALUES ('3', '明星', '0');
-INSERT INTO `father_module` VALUES ('4', '555', '0');
+INSERT INTO `father_module` VALUES ('63', 'aoaoa', '0');
+INSERT INTO `father_module` VALUES ('53', '手机', '1');
+INSERT INTO `father_module` VALUES ('62', '大大大', '0');
+INSERT INTO `father_module` VALUES ('64', '牛逼啊啊啊啊', '0');
 
 -- ----------------------------
 -- Table structure for member
@@ -131,19 +134,20 @@ CREATE TABLE `son_module` (
   `module_name` varchar(66) NOT NULL,
   `info` varchar(255) NOT NULL,
   `member_id` int(10) unsigned DEFAULT '0',
-  `sort` int(10) unsigned DEFAULT NULL,
+  `sort` int(10) unsigned zerofill NOT NULL,
   `father_module_name` varchar(66) NOT NULL,
+  `member_name` varchar(66) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of son_module
 -- ----------------------------
-INSERT INTO `son_module` VALUES ('1', '1', '前端技术', '前端技术交流分享', '0', '1', '');
-INSERT INTO `son_module` VALUES ('2', '1', '后端技术', '后端技术交流分享', '0', '2', '技术交流');
-INSERT INTO `son_module` VALUES ('3', '1', '留言交流建议', '留言交流建议', '0', '0', '技术交流');
-INSERT INTO `son_module` VALUES ('4', '2', '篮球', '篮球真好玩啊', '0', null, '球类');
-INSERT INTO `son_module` VALUES ('5', '2', '足球', '足球也不错啊', '0', null, '球类');
-INSERT INTO `son_module` VALUES ('6', '3', '菜虚鲲', 'rap', '0', null, '明显');
-INSERT INTO `son_module` VALUES ('8', '4', '杜某人', '爱好电子烟', '0', null, '209');
-INSERT INTO `son_module` VALUES ('9', '4', '黄某人', '爱好a片', '0', null, '209');
+INSERT INTO `son_module` VALUES ('1', '1', '前端技术', '前端技术交流分享', '0', '0000000001', '', null);
+INSERT INTO `son_module` VALUES ('2', '1', '后端技术', '后端技术交流分享', '0', '0000000002', '技术交流', null);
+INSERT INTO `son_module` VALUES ('3', '1', '留言交流建议', '留言交流建议', '0', '0000000000', '技术交流', null);
+INSERT INTO `son_module` VALUES ('4', '2', '篮球', '篮球真好玩啊', '0', '0000000000', '球类', null);
+INSERT INTO `son_module` VALUES ('5', '2', '足球', '足球也不错啊', '0', '0000000000', '球类', null);
+INSERT INTO `son_module` VALUES ('6', '3', '菜虚鲲', 'rap', '0', '0000000000', '明显', null);
+INSERT INTO `son_module` VALUES ('8', '4', '杜某人', '爱好电子烟', '0', '0000000000', '209', null);
+INSERT INTO `son_module` VALUES ('9', '4', '黄某人', '爱好a片', '0', '0000000000', '209', null);
