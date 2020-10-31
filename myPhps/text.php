@@ -10,7 +10,7 @@
     {
         $table_name=array("father_module","son_module","content","reply","member","admin");
         foreach($table_name as $i=>$tn){
-            $query ="select count(*) from $tn";
+            $query ="select * from $tn";
             $result =Mysql_inc_execute($link,$query);
 
             $count =mysqli_num_rows($result);//获取行数
